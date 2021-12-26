@@ -126,7 +126,7 @@ var letterDistributions = {
                   { letter: "B", score: 4, count: 1},
                   { letter: "M", score: 2, count: 4},
                   { letter: "P", score: 4, count: 2},
-                  { letter: "F", score: 4, count: 1},
+                  { letter: "F", score: 8, count: 1},
                   { letter: "H", score: 4, count: 2},
                   { letter: "V", score: 3, count: 2},
                   { letter: "K", score: 1, count: 5},
