@@ -522,7 +522,6 @@ Game.prototype.createFollowonGame = async function(startPlayer) {
     for (var i = 0; i < playerCount; i++) {
         var oldPlayer = oldGame.players[(i + startPlayer.index) % playerCount];
         newPlayers.push({ name: oldPlayer.name,
-                          email: oldPlayer.email,
                           key: oldPlayer.key });
     }
     var newGame = await Game.create(oldGame.language, newPlayers);
@@ -625,7 +624,6 @@ async function listGames(req, res) {
             return { key: game.key,
                 players: game.players.map(function(player) {
                     return { name: player.name,
-                        email: player.email,
                         key: player.key,
                         hasTurn: player == game.players[game.whosTurn]};
                 })};
@@ -672,9 +670,8 @@ app.post("/game", function(req, res) {
         var name = req.body['name' + x];
         var email = req.body['email' + x];
         console.log('name', name, 'email', email, 'params', req.params);
-        if (name && email) {
+        if (name) {
             players.push({ name: name,
-                           email: email,
                            key: makeKey() });
         }
     });
