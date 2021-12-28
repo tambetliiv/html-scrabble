@@ -909,25 +909,12 @@ UI.prototype.moveTile = function(fromSquare, toSquare) {
             tile.letter = ' ';
         } else  if ( !tile.letter || (tile.letter == ' ')) {
             if (fromSquare.owner != this.board && toSquare.owner == this.board) {
-                var blankLetterRequesterButton = $("#blankLetterRequester button");
                 function setLetter(letter) {
                     tile.letter = letter;
-                    $.unblockUI();
                     ui.updateSquare(toSquare);
-                    $('#dummyInput').focus();
-                    blankLetterRequesterButton.off('keypress');
                 }
-                blankLetterRequesterButton.on('keypress', function (event) {
-                    var letter = String.fromCharCode(event.charCode);
-                    if (letter != '') {
-                        letter = letter.toUpperCase();
-                        if (ui.legalLetters.indexOf(letter) != -1) {
-                            setLetter(letter);
-                        }
-                    }
-                });
-
-                $.blockUI({ message: $('#blankLetterRequester') });
+                var letter = ' ';
+                setLetter(letter);
             }
         }
     }
